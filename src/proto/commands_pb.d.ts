@@ -319,9 +319,9 @@ export class CreateRole extends jspb.Message {
   setRoleName(value: string): void;
 
   clearPermissionsList(): void;
-  getPermissionsList(): Array<primitive_pb.RolePermission>;
-  setPermissionsList(value: Array<primitive_pb.RolePermission>): void;
-  addPermissions(value: primitive_pb.RolePermission, index?: number): primitive_pb.RolePermission;
+  getPermissionsList(): Array<primitive_pb.RolePermissionMap[keyof primitive_pb.RolePermissionMap]>;
+  setPermissionsList(value: Array<primitive_pb.RolePermissionMap[keyof primitive_pb.RolePermissionMap]>): void;
+  addPermissions(value: primitive_pb.RolePermissionMap[keyof primitive_pb.RolePermissionMap], index?: number): primitive_pb.RolePermissionMap[keyof primitive_pb.RolePermissionMap];
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CreateRole.AsObject;
@@ -336,7 +336,7 @@ export class CreateRole extends jspb.Message {
 export namespace CreateRole {
   export type AsObject = {
     roleName: string,
-    permissionsList: Array<primitive_pb.RolePermission>,
+    permissionsList: Array<primitive_pb.RolePermissionMap[keyof primitive_pb.RolePermissionMap]>,
   }
 }
 
@@ -344,8 +344,8 @@ export class GrantPermission extends jspb.Message {
   getAccountId(): string;
   setAccountId(value: string): void;
 
-  getPermission(): primitive_pb.GrantablePermission;
-  setPermission(value: primitive_pb.GrantablePermission): void;
+  getPermission(): primitive_pb.GrantablePermissionMap[keyof primitive_pb.GrantablePermissionMap];
+  setPermission(value: primitive_pb.GrantablePermissionMap[keyof primitive_pb.GrantablePermissionMap]): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GrantPermission.AsObject;
@@ -360,7 +360,7 @@ export class GrantPermission extends jspb.Message {
 export namespace GrantPermission {
   export type AsObject = {
     accountId: string,
-    permission: primitive_pb.GrantablePermission,
+    permission: primitive_pb.GrantablePermissionMap[keyof primitive_pb.GrantablePermissionMap],
   }
 }
 
@@ -368,8 +368,8 @@ export class RevokePermission extends jspb.Message {
   getAccountId(): string;
   setAccountId(value: string): void;
 
-  getPermission(): primitive_pb.GrantablePermission;
-  setPermission(value: primitive_pb.GrantablePermission): void;
+  getPermission(): primitive_pb.GrantablePermissionMap[keyof primitive_pb.GrantablePermissionMap];
+  setPermission(value: primitive_pb.GrantablePermissionMap[keyof primitive_pb.GrantablePermissionMap]): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RevokePermission.AsObject;
@@ -384,7 +384,7 @@ export class RevokePermission extends jspb.Message {
 export namespace RevokePermission {
   export type AsObject = {
     accountId: string,
-    permission: primitive_pb.GrantablePermission,
+    permission: primitive_pb.GrantablePermissionMap[keyof primitive_pb.GrantablePermissionMap],
   }
 }
 

@@ -234,9 +234,9 @@ export namespace RolesResponse {
 
 export class RolePermissionsResponse extends jspb.Message {
   clearPermissionsList(): void;
-  getPermissionsList(): Array<primitive_pb.RolePermission>;
-  setPermissionsList(value: Array<primitive_pb.RolePermission>): void;
-  addPermissions(value: primitive_pb.RolePermission, index?: number): primitive_pb.RolePermission;
+  getPermissionsList(): Array<primitive_pb.RolePermissionMap[keyof primitive_pb.RolePermissionMap]>;
+  setPermissionsList(value: Array<primitive_pb.RolePermissionMap[keyof primitive_pb.RolePermissionMap]>): void;
+  addPermissions(value: primitive_pb.RolePermissionMap[keyof primitive_pb.RolePermissionMap], index?: number): primitive_pb.RolePermissionMap[keyof primitive_pb.RolePermissionMap];
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RolePermissionsResponse.AsObject;
@@ -250,13 +250,13 @@ export class RolePermissionsResponse extends jspb.Message {
 
 export namespace RolePermissionsResponse {
   export type AsObject = {
-    permissionsList: Array<primitive_pb.RolePermission>,
+    permissionsList: Array<primitive_pb.RolePermissionMap[keyof primitive_pb.RolePermissionMap]>,
   }
 }
 
 export class ErrorResponse extends jspb.Message {
-  getReason(): ErrorResponse.Reason;
-  setReason(value: ErrorResponse.Reason): void;
+  getReason(): ErrorResponse.ReasonMap[keyof ErrorResponse.ReasonMap];
+  setReason(value: ErrorResponse.ReasonMap[keyof ErrorResponse.ReasonMap]): void;
 
   getMessage(): string;
   setMessage(value: string): void;
@@ -276,22 +276,24 @@ export class ErrorResponse extends jspb.Message {
 
 export namespace ErrorResponse {
   export type AsObject = {
-    reason: ErrorResponse.Reason,
+    reason: ErrorResponse.ReasonMap[keyof ErrorResponse.ReasonMap],
     message: string,
     errorCode: number,
   }
 
-  export enum Reason {
-    STATELESS_INVALID = 0,
-    STATEFUL_INVALID = 1,
-    NO_ACCOUNT = 2,
-    NO_ACCOUNT_ASSETS = 3,
-    NO_ACCOUNT_DETAIL = 4,
-    NO_SIGNATORIES = 5,
-    NOT_SUPPORTED = 6,
-    NO_ASSET = 7,
-    NO_ROLES = 8,
+  export interface ReasonMap {
+    STATELESS_INVALID: 0;
+    STATEFUL_INVALID: 1;
+    NO_ACCOUNT: 2;
+    NO_ACCOUNT_ASSETS: 3;
+    NO_ACCOUNT_DETAIL: 4;
+    NO_SIGNATORIES: 5;
+    NOT_SUPPORTED: 6;
+    NO_ASSET: 7;
+    NO_ROLES: 8;
   }
+
+  export const Reason: ReasonMap;
 }
 
 export class SignatoriesResponse extends jspb.Message {
