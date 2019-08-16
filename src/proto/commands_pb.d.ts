@@ -50,6 +50,26 @@ export namespace AddPeer {
   }
 }
 
+export class RemovePeer extends jspb.Message {
+  getPublicKey(): string;
+  setPublicKey(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RemovePeer.AsObject;
+  static toObject(includeInstance: boolean, msg: RemovePeer): RemovePeer.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: RemovePeer, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RemovePeer;
+  static deserializeBinaryFromReader(message: RemovePeer, reader: jspb.BinaryReader): RemovePeer;
+}
+
+export namespace RemovePeer {
+  export type AsObject = {
+    publicKey: string,
+  }
+}
+
 export class AddSignatory extends jspb.Message {
   getAccountId(): string;
   setAccountId(value: string): void;
@@ -412,6 +432,46 @@ export namespace SubtractAssetQuantity {
   }
 }
 
+export class CompareAndSetAccountDetail extends jspb.Message {
+  getAccountId(): string;
+  setAccountId(value: string): void;
+
+  getKey(): string;
+  setKey(value: string): void;
+
+  getValue(): string;
+  setValue(value: string): void;
+
+  hasOldValue(): boolean;
+  clearOldValue(): void;
+  getOldValue(): string;
+  setOldValue(value: string): void;
+
+  getOptOldValueCase(): CompareAndSetAccountDetail.OptOldValueCase;
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CompareAndSetAccountDetail.AsObject;
+  static toObject(includeInstance: boolean, msg: CompareAndSetAccountDetail): CompareAndSetAccountDetail.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: CompareAndSetAccountDetail, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CompareAndSetAccountDetail;
+  static deserializeBinaryFromReader(message: CompareAndSetAccountDetail, reader: jspb.BinaryReader): CompareAndSetAccountDetail;
+}
+
+export namespace CompareAndSetAccountDetail {
+  export type AsObject = {
+    accountId: string,
+    key: string,
+    value: string,
+    oldValue: string,
+  }
+
+  export enum OptOldValueCase {
+    OPT_OLD_VALUE_NOT_SET = 0,
+    OLD_VALUE = 4,
+  }
+}
+
 export class Command extends jspb.Message {
   hasAddAssetQuantity(): boolean;
   clearAddAssetQuantity(): void;
@@ -493,6 +553,16 @@ export class Command extends jspb.Message {
   getTransferAsset(): TransferAsset | undefined;
   setTransferAsset(value?: TransferAsset): void;
 
+  hasRemovePeer(): boolean;
+  clearRemovePeer(): void;
+  getRemovePeer(): RemovePeer | undefined;
+  setRemovePeer(value?: RemovePeer): void;
+
+  hasCompareAndSetAccountDetail(): boolean;
+  clearCompareAndSetAccountDetail(): void;
+  getCompareAndSetAccountDetail(): CompareAndSetAccountDetail | undefined;
+  setCompareAndSetAccountDetail(value?: CompareAndSetAccountDetail): void;
+
   getCommandCase(): Command.CommandCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Command.AsObject;
@@ -522,6 +592,8 @@ export namespace Command {
     setAccountQuorum?: SetAccountQuorum.AsObject,
     subtractAssetQuantity?: SubtractAssetQuantity.AsObject,
     transferAsset?: TransferAsset.AsObject,
+    removePeer?: RemovePeer.AsObject,
+    compareAndSetAccountDetail?: CompareAndSetAccountDetail.AsObject,
   }
 
   export enum CommandCase {
@@ -542,6 +614,8 @@ export namespace Command {
     SET_ACCOUNT_QUORUM = 14,
     SUBTRACT_ASSET_QUANTITY = 15,
     TRANSFER_ASSET = 16,
+    REMOVE_PEER = 17,
+    COMPARE_AND_SET_ACCOUNT_DETAIL = 18,
   }
 }
 
