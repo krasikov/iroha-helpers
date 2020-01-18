@@ -237,7 +237,24 @@ function detachRole (commandOptions, params) {
     )
   )
 }
-
+/**
+ * engineCall
+ * @param {Object} commandOptions
+ * @param {Object} params
+ * @property {String} params.callee
+ * @property {String} params.input
+ * @link https://iroha.readthedocs.io/en/latest/api/commands.html#engine-call
+ */
+function engineCall (commandOptions, params) {
+  return command(
+    commandOptions,
+    txHelper.addCommand(
+      txHelper.emptyTransaction(),
+      'engineCall',
+      validate(params, ['callee', 'input'])
+    )
+  )
+}
 /**
  * grantPermission
  * @param {Object} commandOptions
@@ -406,6 +423,7 @@ export default {
   createDomain,
   createRole,
   detachRole,
+  engineCall,
   grantPermission,
   removePeer,
   removeSignatory,
