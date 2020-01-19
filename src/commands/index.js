@@ -247,13 +247,16 @@ function detachRole (commandOptions, { accountId, roleName }) {
  * @property {String} params.input
  * @link https://iroha.readthedocs.io/en/latest/api/commands.html#engine-call
  */
-function engineCall (commandOptions, params) {
+function engineCall (commandOptions, { callee, input }) {
   return command(
     commandOptions,
     txHelper.addCommand(
       txHelper.emptyTransaction(),
       'engineCall',
-      validate(params, ['callee', 'input'])
+      {
+        callee,
+        input
+      }
     )
   )
 }
