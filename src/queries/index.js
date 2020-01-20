@@ -444,6 +444,34 @@ function getBlock (queryOptions, { height }) {
     }
   )
 }
+/**
+ * GetEngineResponse
+ * @param {Object} queryOptions
+ * @param {Object} args
+ * @property {Number} args.height
+ * @link https://iroha.readthedocs.io/en/latest/api/queries.html#get-engine-response
+ */
+function getEngineResponse (queryOptions, { height }) {
+  return sendQuery(
+    queryOptions,
+    queryHelper.addQuery(
+      queryHelper.emptyQuery(),
+      'getEngineResponse',
+      {
+        height
+      }
+    ),
+    (resolve, reject, responseName, response) => {
+      if (responseName !== 'ENGINE_RESPONSE') {
+        const error = JSON.stringify(response.toObject().errorResponse)
+        return reject(new Error(`Query response error: expected=ENGINE_RESPONSE, actual=${responseName}\nReason: ${error}`))
+      }
+
+      const engineResponse = response.EngineResponse()
+      resolve(engineResponse)
+    }
+  )
+}
 
 export default {
   getAccount,
@@ -458,5 +486,6 @@ export default {
   getAssetInfo,
   getRoles,
   getRolePermissions,
-  getBlock
+  getBlock,
+  getEngineResponse
 }
